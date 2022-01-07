@@ -1,4 +1,4 @@
-// in-built http server
+// in-built https server
 const https = require("https");
 
 // express to handle http requests
