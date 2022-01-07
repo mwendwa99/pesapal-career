@@ -17,10 +17,10 @@ const bodyParser = require("body-parser");
 // configure body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// use Content-Type and Content-Length
+// use Content-Type and Content-Length of 100kb
 app.use(bodyParser.json({
     type: 'application/json',
-    // limit:''
+    limit: '100kb',
 }));
 
 // get request to the html file at root
@@ -32,39 +32,12 @@ app.get("/", (req, res) => {
 
 // post request to the html file at root
 app.post("/message", (req, res) => {
-
     console.log(req.body);
 
     // redirect to the root
     res.redirect("/");
-
-    // // get the data from the request
-    // const data = req.body;
-
-    // // get the file name from the request
-    // const fileName = data.fileName;
-
-    // // get the file content from the request
-    // const fileContent = data.fileContent;
-
-    // // write the file to the file system
-    // fs.writeFile(fileName, fileContent, (err) => {
-
-    //     // if error
-    //     if (err) {
-
-    //         // send error message
-    //         res.send(err);
-    //     }
-
-    //     // if no error
-    //     else {
-
-    //         // send success message
-    //         res.send("File saved successfully!");
-    //     }
-    // });
 });
+
 
 // object of key and certificate for SSL
 const options = {
@@ -77,3 +50,8 @@ https.createServer(options, app)
     .listen(PORT, (req, res) => {
         console.log(`server is running at port: ${PORT}`);
     });
+
+// 404 error handler
+app.use('*', (req, res, next) => {
+    res.status(404).send("<h1>404 Sorry That Page Does Not Exist!</h1>");
+})

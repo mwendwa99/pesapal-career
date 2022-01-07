@@ -8,17 +8,15 @@
     <title>HTTPS Server</title>
 </head>
 
-<body>
-    <h1>Welcome to HTTPS Server</h1>
+<body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <h1>This is a Secure HTTPS Server</h1>
     <br><br>
     <h3>Enter your message</h3>
-
-    <!-- sending post request to "mssg" with
-		the message from the textarea -->
-    <form action="message" method="post">
-        <textarea name="message" id="" cols="30" rows="10"></textarea>
-        <button type="submit">Send</button>
+    <form action="message" method="post" https://localhost:8000/message>
+        <input type="text" name="message">
+        <input type="submit" value="Submit">
     </form>
+    <br><br>
 </body>
 
 </html>
