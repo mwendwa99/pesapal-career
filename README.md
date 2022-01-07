@@ -24,9 +24,9 @@ install dependencies: `npm install`
 
 ## Usage
 
-run the server: `node app.js`
-open the browser and go to https://localhost:8000
-type in the text and click on submit
+1. Run the server: `node app.js`
+2. Open the browser and go to https://localhost:8000
+3. Type in the text and click on submit
 
 ## License
 
