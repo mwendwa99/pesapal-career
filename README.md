@@ -5,10 +5,11 @@
 - This is a simple web server with secure communication.
 - It listenes to port 8000 and accepts only connections from localhost.
 - This server is based on [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/).
-- It supports only GET and POST requests. The only headders supported are: `Content-Type` and `Content-Length`.
+- It supports only GET and POST requests. The only headers supported are: `Content-Type` and `Content-Length`.
 
 ### Techonolgies used:
 
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
 - [SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)
