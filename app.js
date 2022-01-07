@@ -23,21 +23,39 @@ app.use(bodyParser.json({
     limit: '100kb',
 }));
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+app.use((req, res, next) => {
+    // return new url
+    if (req.url === "/homepage") {
+        res.send("<h3>home ('/') URL has been rewritten to '/homepage'</h3>");
+    } else {
+        next();
+    }
+});
+
 // get request to the html file at root
 app.get("/", (req, res) => {
-
     // send index.html to browser
     res.sendFile(__dirname + "/index.html");
 });
 
 // post request to the html file at root
 app.post("/message", (req, res) => {
-    console.log(req.body);
-
-    // redirect to the root
-    res.redirect("/");
+    // send message to browser in html
+    res.send(`
+    <body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h1>This page has been dynamically generated from the server</h1>
+        <br><br>
+        <h3>Your message: ${req.body.message}</h3>
+        <a href="https://localhost:8000/">go back</a>
+    </body>
+    `);
 });
-
 
 // object of key and certificate for SSL
 const options = {
