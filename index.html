@@ -8,15 +8,21 @@
     <title>HTTPS Server</title>
 </head>
 
-<body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+<body style=" background-color: #f0f0f0;
+padding: 10px; 
+display: flex; 
+justify-content: center;
+flex-direction: column;
+text-align: center; 
+align-items:center;">
     <h1>This page is served from a secure HTTPS server</h1>
     <br><br>
     <h3>Enter your message</h3>
-    <form action="message" method="post" https://localhost:8000/message>
-        <input type="text" name="message">
+    <form id='post' action="message" method="post" https://localhost:8443/message>
+        <textarea form="post" name="message" id="messageid" cols="35" wrap="soft"></textarea>
+        <br><br>
         <input type="submit" value="Submit">
     </form>
-    <br><br>
 </body>
 
 </html>
