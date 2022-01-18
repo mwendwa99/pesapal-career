@@ -2,7 +2,7 @@ const fs = require('fs')
 
 // this is our original handler, extracted as a function
 // returns a response of 26 bytes
-const helloWorldHandler = (stream, headers) => {
+const startPageHandler = (stream, headers) => {
     console.log({ headers })
     stream.respond({
         'content-type': 'text/html; charset=utf-8',
@@ -81,7 +81,7 @@ const router = (stream, headers) => {
     // it to the `handler` variable
     let handler
     if (path === "/" && method === 'GET') {
-        handler = helloWorldHandler
+        handler = startPageHandler
     }
     else if (path === "/message" && method == 'POST') {
         // handler = messageHandler
