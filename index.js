@@ -1,7 +1,7 @@
 const http2 = require('http2');
 const fs = require('fs');
 
-// create a new session with google.com
+// create a new session with localhost
 const session = http2.connect('https://localhost:8443', {
     // since certificate is not signed by a trusted CA,
     // we need to pass the certificate to the server
