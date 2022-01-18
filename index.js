@@ -1,7 +1,7 @@
 const http2 = require('http2');
 
 // create a new session with google.com
-const session = http2.connect('https://google.com');
+const session = http2.connect('http://localhost:8443');
 
 // log any errors to the console
 session.on('error', (err) => console.error(err));
