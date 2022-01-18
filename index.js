@@ -6,10 +6,19 @@ const session = http2.connect('http://localhost:8443');
 // log any errors to the console
 session.on('error', (err) => console.error(err));
 
-// new request stream
-const req = session.request({ ':path': '/' });
-// end request
-req.end();
+// // new request stream
+// const req = session.request({ ':path': '/' });
+// // end request
+// req.end();
+
+// set request timeout to 100ms
+const req = session.request({ ':path': '/', ':method': 'POST', ':scheme': 'https' });
+req.setTimeout(100, () => {
+    // if the request times out, end the request
+    console.log('request timed out');
+    req.end();
+});
+
 
 // fire a callback once a response is received from the server
 req.on('response', (headers, flags) => {

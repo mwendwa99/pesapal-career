@@ -11,6 +11,10 @@ const helloWorldHandler = (stream, headers) => {
 // the server is up and running
 const pingHandler = (stream, headers) => {
     console.log({ headers })
+    // if stream has been closed, return
+    if (stream.closed) {
+        return
+    }
     stream.respond({
         ':status': 200
     })
