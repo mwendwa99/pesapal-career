@@ -8,6 +8,9 @@ const server = http2.createSecureServer({
     cert: fs.readFileSync('server.cert')
 });
 
+// log any error that occurs when running the server
+server.on('error', (err) => console.error(err))
+
 // event to listen to tcp stream
 server.on('stream', (stream, headers) => {
     // send response
@@ -16,8 +19,10 @@ server.on('stream', (stream, headers) => {
         ':status': 200
     });
 
-    // send data
-    stream.end('<h1>Hello World!</h1>');
+    // response streams are also stream objects, so we can
+    // use `write` to send data, and `end` once we're done
+    stream.write('<h1>Hello World</h1>');
+    stream.end()
 });
 
 server.listen(8443);
