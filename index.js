@@ -1,3 +1,11 @@
+const http2 = require('http2');
+
+// create a new session with google.com
+const session = http2.connect('https://google.com');
+
+// log any errors to the console
+session.on('error', (err) => console.error(err));
+
 // new request stream
 const req = session.request({ ':path': '/' });
 // end request
